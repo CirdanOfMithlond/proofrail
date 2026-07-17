@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ProofRail turns expert corrections into durable rules, regression tests, and bounded document repairs.">
+  <title>ProofRail — Persistent document constraints</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to workspace</a>
+
+  <header class="site-header">
+    <div class="brand-block" aria-label="ProofRail">
+      <div class="mark" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div>
+        <p class="eyebrow">CONTROLLED DOCUMENT WORKFLOW</p>
+        <h1>ProofRail</h1>
+        <p class="tagline">Every correction becomes a permanent constraint.</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="status-stack">
+        <span class="status-label">Workflow state</span>
+        <span id="stateBadge" class="state-badge state-ready" role="status" aria-live="polite">READY</span>
+      </div>
+      <button id="resetButton" class="button button-quiet" type="button">
+        <span aria-hidden="true">↺</span> Reset Demo
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content" class="workspace">
+    <section class="workflow-overview" aria-labelledby="workflow-title">
+      <div>
+        <p class="section-kicker">CONTROL RUN DEMO-A</p>
+        <h2 id="workflow-title">Expert correction → persistent assurance</h2>
+      </div>
+      <ol class="stepper" aria-label="Demo progress">
+        <li class="step is-active" data-step="1"><span>1</span><small>Source</small></li>
+        <li class="step" data-step="2"><span>2</span><small>Compile</small></li>
+        <li class="step" data-step="3"><span>3</span><small>Revise</small></li>
+        <li class="step" data-step="4"><span>4</span><small>Test</small></li>
+        <li class="step" data-step="5"><span>5</span><small>Repair</small></li>
+      </ol>
+    </section>
+
+    <section class="primary-grid" aria-label="Source and correction">
+      <article class="panel source-panel">
+        <header class="panel-header">
+          <div>
+            <p class="panel-index">01 / DOCUMENT</p>
+            <h2>Source Draft</h2>
+          </div>
+          <div class="document-meta">
+            <span id="documentVersion" class="meta-pill">ORIGINAL v1</span>
+            <span id="approvalBadge" class="approval-badge is-neutral">NOT ASSESSED</span>
+          </div>
+        </header>
+        <div id="documentSurface" class="document-surface" aria-live="polite"></div>
+        <div id="changeBoundary" class="boundary-note" hidden>
+          <span aria-hidden="true">⌁</span>
+          <p><strong>Repair boundary:</strong> conclusion reasoning, duplicate evidence, and the frozen heading only.</p>
+        </div>
+      </article>
+
+      <article class="panel correction-panel">
+        <header class="panel-header">
+          <div>
+            <p class="panel-index">02 / EXPERT INPUT</p>
+            <h2>Expert Correction</h2>
+          </div>
+          <span class="meta-pill meta-fixed">SOURCE LOCKED</span>
+        </header>
+        <blockquote>
+          “Do not conclude that the control is effective from completion alone. Explain why the observed result supports the conclusion, keep the supporting evidence in §4.3 rather than repeating it in §4.2, and preserve the heading ‘4.3 Evidence summary’.”
+        </blockquote>
+        <div class="correction-context">
+          <div><span>Scope</span><strong>§4.2–§4.3</strong></div>
+          <div><span>Authority</span><strong>Domain reviewer</strong></div>
+          <div><span>Mode</span><strong>Persistent</strong></div>
+        </div>
+        <div class="intent-note">
+          <span class="intent-icon" aria-hidden="true">i</span>
+          <p>The correction combines a reasoning requirement, a non-duplication rule, and a frozen structural constraint.</p>
+        </div>
+      </article>
+    </section>
+
+    <nav class="control-bar" aria-label="ProofRail controls">
+      <div class="control-copy">
+        <span id="nextActionLabel">NEXT CONTROL</span>
+        <strong id="nextActionText">Compile the expert correction into durable controls.</strong>
+      </div>
+      <div class="button-group">
+        <button id="compileButton" class="button button-primary" type="button">Compile Correction</button>
+        <button id="revisionButton" class="button button-secondary" type="button" disabled>Run Revision</button>
+        <button id="testButton" class="button button-secondary" type="button" disabled>Run Regression Tests</button>
+        <button id="repairButton" class="button button-repair" type="button" disabled>Apply Bounded Repair</button>
+      </div>
+    </nav>
+
+    <div id="outcomeBanner" class="outcome-banner" role="alert" hidden>
+      <div class="outcome-icon" aria-hidden="true">!</div>
+      <div>
+        <strong id="outcomeTitle">Revision blocked</strong>
+        <p id="outcomeText">The revision cannot advance while regression controls are failing.</p>
+      </div>
+      <span id="outcomeCode">GATE CLOSED</span>
+    </div>
+
+    <section class="detail-grid" aria-label="Compiled controls and audit evidence">
+      <article class="panel ledger-panel">
+        <header class="panel-header compact">
+          <div>
+            <p class="panel-index">03 / MEMORY</p>
+            <h2>Decision Ledger</h2>
+          </div>
+          <span id="ledgerCount" class="count-badge">0 DECISIONS</span>
+        </header>
+        <div id="ledgerContent" class="empty-state">
+          <span aria-hidden="true">◇</span>
+          <p>No persistent decisions compiled.</p>
+        </div>
+      </article>
+
+      <article class="panel rules-panel">
+        <header class="panel-header compact">
+          <div>
+            <p class="panel-index">04 / CONSTRAINTS</p>
+            <h2>Compiled Rules</h2>
+          </div>
+          <span id="ruleCount" class="count-badge">0 RULES</span>
+        </header>
+        <div id="rulesContent" class="empty-state">
+          <span aria-hidden="true">{ }</span>
+          <p>Rules will appear after compilation.</p>
+        </div>
+      </article>
+
+      <article class="panel tests-panel">
+        <header class="panel-header compact">
+          <div>
+            <p class="panel-index">05 / ASSURANCE</p>
+            <h2>Regression Tests</h2>
+          </div>
+          <span id="testScore" class="test-score is-pending">0/3 PENDING</span>
+        </header>
+        <div id="testsContent" class="tests-content"></div>
+      </article>
+
+      <article class="panel patch-panel">
+        <header class="panel-header compact">
+          <div>
+            <p class="panel-index">06 / CHANGE CONTROL</p>
+            <h2>Controlled Patch</h2>
+          </div>
+          <span id="patchState" class="count-badge">NOT COMPILED</span>
+        </header>
+        <div id="patchContent" class="empty-state">
+          <span aria-hidden="true">±</span>
+          <p>The traceable wording patch will appear here.</p>
+        </div>
+      </article>
+
+      <article class="panel audit-panel">
+        <header class="panel-header compact">
+          <div>
+            <p class="panel-index">07 / TRACE</p>
+            <h2>Audit Trail</h2>
+          </div>
+          <span id="auditCount" class="count-badge">1 EVENT</span>
+        </header>
+        <ol id="auditTrail" class="audit-list" aria-live="polite"></ol>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>ProofRail MVP · Fictional, anonymised demonstration data · Runs locally</p>
+    <p>No data leaves this browser.</p>
+  </footer>
+
+  <div id="liveRegion" class="visually-hidden" aria-live="assertive"></div>
+  <script src="app.js"></script>
+</body>
+</html>

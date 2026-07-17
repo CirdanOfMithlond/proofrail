@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "1.0",
+  "scenario": {
+    "id": "DEMO-A",
+    "title": "Recovery control assessment",
+    "classification": "fictional-anonymised-demo",
+    "reviewerRole": "Domain reviewer"
+  },
+  "originalDocument": {
+    "version": "ORIGINAL v1",
+    "sections": [
+      {
+        "id": "4.2",
+        "heading": "4.2 Control evaluation",
+        "body": "The recovery control is effective because the quarterly exercise was completed on schedule."
+      },
+      {
+        "id": "4.3",
+        "heading": "4.3 Evidence summary",
+        "body": "The sampled quarterly recovery exercise restored the service in 28 minutes against an approved 45-minute tolerance."
+      }
+    ]
+  },
+  "expertCorrection": "Do not conclude that the control is effective from completion alone. Explain why the observed result supports the conclusion, keep the supporting evidence in §4.3 rather than repeating it in §4.2, and preserve the heading ‘4.3 Evidence summary’.",
+  "compiledDecision": {
+    "id": "DECISION-A",
+    "scope": ["4.2", "4.3"],
+    "persistence": "all-subsequent-revisions",
+    "rule": "Effectiveness claims require causal reasoning; evidence remains singular and approved structure remains frozen.",
+    "repairAuthority": "failed-elements-only"
+  },
+  "compiledRules": [
+    {
+      "id": "R-01",
+      "type": "semantic",
+      "requirement": "Link the observed result to the controlled risk."
+    },
+    {
+      "id": "R-02",
+      "type": "content",
+      "requirement": "Keep substantive recovery evidence in §4.3 only."
+    },
+    {
+      "id": "R-03",
+      "type": "structure",
+      "requirement": "Preserve the exact heading 4.3 Evidence summary."
+    }
+  ],
+  "controlledPatch": {
+    "currentWording": "The recovery control is effective because the quarterly exercise was completed on schedule.",
+    "replacementWording": "The recovery control is assessed as effective because restoration completed within the approved tolerance, reducing the likelihood that an interruption would exceed the service limit. Supporting evidence is recorded in §4.3.",
+    "reason": "Completion is not evidence of effectiveness. The replacement states the observed threshold, links it to interruption risk, and leaves the underlying evidence in its controlled section."
+  },
+  "defectiveRevision": {
+    "version": "DEFECTIVE v2",
+    "deliberateDefects": [
+      "required-reasoning-omitted",
+      "substantive-evidence-duplicated",
+      "frozen-heading-altered"
+    ],
+    "sections": [
+      {
+        "id": "4.2",
+        "heading": "4.2 Control evaluation",
+        "body": "The recovery control is effective. The sampled quarterly recovery exercise restored the service in 28 minutes against an approved 45-minute tolerance."
+      },
+      {
+        "id": "4.3",
+        "heading": "4.3 Test evidence",
+        "body": "The sampled quarterly recovery exercise restored the service in 28 minutes against an approved 45-minute tolerance."
+      }
+    ]
+  },
+  "expectedResults": {
+    "defectiveRevision": {
+      "T-01": "fail",
+      "T-02": "fail",
+      "T-03": "fail",
+      "approval": "blocked"
+    },
+    "boundedRepair": {
+      "T-01": "pass",
+      "T-02": "pass",
+      "T-03": "pass",
+      "approval": "approved"
+    }
+  }
+}
